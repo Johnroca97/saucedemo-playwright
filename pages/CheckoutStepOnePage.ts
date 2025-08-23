@@ -61,7 +61,6 @@ class CheckoutStepOnePage {
     await this.postalCodeInput.clear();
   }
 
-  // Métodos para obtener información (no aserciones)
   async getPageTitle(): Promise<string> {
     return await this.pageTitle.textContent() || '';
   }

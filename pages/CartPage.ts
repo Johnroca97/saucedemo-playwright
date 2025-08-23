@@ -8,7 +8,6 @@ class CartPage {
   private continueShoppingButton: Locator;
   private cartQuantityLabel: Locator;
   
-  // Locators dinámicos por producto - nombres únicos
   private getCartItemByName: (productName: string) => Locator;
   private getRemoveButtonLocator: (productName: string) => Locator;
   private getItemQuantityLocator: (productName: string) => Locator;
@@ -22,7 +21,6 @@ class CartPage {
     this.continueShoppingButton = page.locator('[data-test="continue-shopping"]');
     this.cartQuantityLabel = page.locator('.cart_quantity_label');
 
-    // Locators dinámicos
     this.getCartItemByName = (productName: string) =>
       page.locator('[data-test="inventory-item-name"]').filter({ hasText: productName });
 
@@ -39,7 +37,6 @@ class CartPage {
       page.locator(`.cart_item:has([data-test="inventory_item_name"]:has-text("${productName}")) .inventory_item_price`);
   }
 
-  // Método helper para transformar nombres de productos a IDs de botones (igual que ProductsPage)
   private transformProductNameToButtonId(productName: string): string {
     return productName
       .toLowerCase()

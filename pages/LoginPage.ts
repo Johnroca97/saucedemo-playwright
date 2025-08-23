@@ -43,7 +43,6 @@ class LoginPage {
     await this.page.waitForLoadState('networkidle');
   }
 
-  // Métodos para obtener estados/valores (no aserciones)
   async getErrorMessage(): Promise<string> {
     await this.errorMessage.waitFor();
     return await this.errorMessage.textContent() || '';

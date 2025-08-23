@@ -13,7 +13,6 @@ class CheckoutStepTwoPage {
   private totalLabel: Locator;
   private summaryInfo: Locator;
 
-  // Locators dinámicos para items específicos - nombres únicos
   private getItemByName: (productName: string) => Locator;
   private getItemPriceLocator: (productName: string) => Locator;
   private getItemQuantityLocator: (productName: string) => Locator;
@@ -31,7 +30,6 @@ class CheckoutStepTwoPage {
     this.totalLabel = page.locator('.summary_total_label');
     this.summaryInfo = page.locator('.summary_info');
 
-    // Locators dinámicos
     this.getItemByName = (productName: string) => 
       page.locator(`.cart_item:has([data-test="inventory_item_name"]:has-text("${productName}"))`);
     
@@ -56,7 +54,6 @@ class CheckoutStepTwoPage {
     await this.cancelButton.click();
   }
 
-  // Métodos para obtener información (no aserciones)
   async getPageTitle(): Promise<string> {
     return await this.pageTitle.textContent() || '';
   }
@@ -158,11 +155,10 @@ class CheckoutStepTwoPage {
     return hasItems && hasTotal && hasTax && hasItemTotal;
   }
 
-  // Método para validar cálculos
   async calculateExpectedTotal(): Promise<number> {
     const itemTotal = await this.getItemTotalValue();
     const tax = await this.getTaxValue();
-    return Math.round((itemTotal + tax) * 100) / 100; // Redondear a 2 decimales
+    return Math.round((itemTotal + tax) * 100) / 100;
   }
 }
 

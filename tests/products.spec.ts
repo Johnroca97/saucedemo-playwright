@@ -10,8 +10,6 @@ test.describe('Products Page Functionality', () => {
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
     productsPage = new ProductsPage(page);
-    
-    // Setup: Login antes de cada test
     await loginPage.goto();
     await loginPage.login(USERS.STANDARD.username, USERS.STANDARD.password);
     await productsPage.waitForPageLoad();

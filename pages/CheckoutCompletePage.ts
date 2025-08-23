@@ -30,7 +30,6 @@ class CheckoutCompletePage {
     await this.backHomeButton.click();
   }
 
-  // Métodos para obtener información (no aserciones)
   async getPageTitle(): Promise<string> {
     return await this.pageTitle.textContent() || '';
   }

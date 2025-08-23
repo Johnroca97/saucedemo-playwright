@@ -10,7 +10,6 @@ class ProductsPage {
   private menuButton: Locator;
   private logoutLink: Locator;
   
-  // Función para obtener elementos dinámicos por nombre de producto
   private getProductByName: (productName: string) => Locator;
   private getAddToCartButtonLocator: (productName: string) => Locator;
   private getRemoveButtonLocator: (productName: string) => Locator;
@@ -26,7 +25,6 @@ class ProductsPage {
     this.menuButton = page.locator('#react-burger-menu-btn');
     this.logoutLink = page.locator('#logout_sidebar_link');
 
-    // Locators dinámicos
     this.getProductByName = (productName: string) => 
       page.locator(`[data-test="inventory_item_name"]:has-text("${productName}")`);
     
@@ -80,7 +78,6 @@ class ProductsPage {
     await this.logoutLink.click();
   }
 
-  // Métodos para obtener información (no aserciones)
   async getPageTitle(): Promise<string> {
     return await this.pageTitle.textContent() || '';
   }
